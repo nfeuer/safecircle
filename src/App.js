@@ -3,6 +3,7 @@ import { MuiThemeProvider } from 'material-ui/styles';
 
 import ButtonAppBar from './ButtonAppBar';
 import FloatingActionButtons from './FloatingActionButtons';
+import Posting from './posting';
 import Card from './CircleCard';
 import Card2 from './CircleCard2';
 import PostingCard from './PostingCard';
@@ -30,6 +31,7 @@ class App extends Component {
           {
             this.current === 'index' ? this._renderCardList() :
             this.current === 'map' ? this._renderMap() :
+            this.current === 'posting' ? <Posting/> :
             null
           }
           {
