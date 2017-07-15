@@ -24,7 +24,7 @@ function WelcomeCard(props) {
         <CardContent className={classes.content}>
           <h4>Immigrants! Welcome to your local Dominican Republic Inner Circle</h4>
           <ol>
-            <li>A popular Indian restaurant near you: <a href="/index.html?current=map&mapType=markerSingle&coord=40.761535,-73.994028"><strong>Lali</strong></a></li>
+            <li>A popular Dominican restaurant near you: <a href="/index.html?current=map&mapType=markerSingle&coord=40.761535,-73.994028"><strong>Lali</strong></a></li>
             <li>To, open a bank account, go to: <a href="/index.html?current=map&mapType=markerSingle&coord=40.758745,-73.987937"><strong>Chase Bank</strong></a></li>
             <li>The nearest grocery or pharmacy is: <a href="/index.html?current=map&mapType=markerSingle&coord=40.761824,-73.986279"><strong>The Food Emporium</strong></a></li>
           </ol>
