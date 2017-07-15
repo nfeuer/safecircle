@@ -5,6 +5,7 @@ import ButtonAppBar from './ButtonAppBar';
 import FloatingActionButtons from './FloatingActionButtons';
 import Card from './CircleCard';
 import Card2 from './CircleCard2';
+import Card3 from './CircleCard3';
 
 import retailers from './retailers.json';
 
@@ -45,14 +46,7 @@ class App extends Component {
       <div className="class-list">
         <Card />
         <Card2 />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card3 />
         <Card />
       </div>
     );

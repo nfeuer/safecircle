@@ -10,25 +10,13 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Map from 'material-ui-icons/Map';
 import Message from 'material-ui-icons/Message';
 import Assignment from 'material-ui-icons/Assignment';
-import Library_Books from 'material-ui-icons/LibraryBooks';
+import LibraryBooks from 'material-ui-icons/LibraryBooks';
 import Group from 'material-ui-icons/Group';
 
-const styleSheet = createStyleSheet('CircleCard', theme => ({
+const styleSheet = createStyleSheet('CircleCard3', theme => ({
   button: {
     margin: theme.spacing.unit,
     color: '#fff'
-  },
-  buttonOne2: {
-    color: '#9C27B0'
-  },
-  buttonTwo2: {
-    color: '#673AB7'
-  },
-  buttonThree2: {
-    color: '#3F51B5'
-  },
-  buttonFour2: {
-    color: '#2196F3'
   },
   goRight: {
       float: 'right'
@@ -36,11 +24,19 @@ const styleSheet = createStyleSheet('CircleCard', theme => ({
   card: {
     maxWidth: 345,
   },
+  people: {
+    color: '#2196F3'
+  },
   span: {
     fontSize: '25px'
   },
-  people: {
-    color: '#2196F3'
+  join: {
+    background: "#64DD17",
+    color: "#fff"
+  },
+  later: {
+    background: "#0091EA",
+    color: "#fff"
   }
 }));
 
@@ -51,23 +47,20 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardContent>
           <Typography type="headline" component="h2">
-            New York - Local
+            New York - City All
           </Typography>
           <IconButton className={classes.button, classes.people} aria-label="Group">
             <Group />
           </IconButton>
-          <span className={classes.span}>80</span>
+          <span className={classes.span}>10k</span>
         </CardContent>
         <CardActions className={classes.goRight}>
-          <IconButton className={classes.button, classes.buttonOne2} aria-label="Message">
-            <Message />
-          </IconButton>
-          <IconButton className={classes.button, classes.buttonTwo2} aria-label="Assignment">
-            <Assignment />
-          </IconButton>
-          <IconButton className={classes.button, classes.buttonThree2} aria-label="LibraryBooks">
-            <Library_Books />
-          </IconButton>
+          <Button raised className={classes.join} >
+            Join
+          </Button>
+          <Button raised className={classes.later}>
+            Later
+          </Button>
         </CardActions>
       </Card>
     </div>
