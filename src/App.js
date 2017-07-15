@@ -5,6 +5,7 @@ import ButtonAppBar from './ButtonAppBar';
 import FloatingActionButtons from './FloatingActionButtons';
 import Card from './CircleCard';
 import Card2 from './CircleCard2';
+import PostingCard from './PostingCard';
 
 import retailers from './retailers.json';
 
@@ -43,6 +44,8 @@ class App extends Component {
   _renderCardList() {
     return (
       <div className="class-list">
+        <PostingCard type="request"/>
+        <PostingCard type="offer"/>
         <Card />
         <Card2 />
         <Card />

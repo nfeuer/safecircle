@@ -35,3 +35,7 @@ body {
 #map {
   height: 581px;
 }
+
+.posting-card {
+  margin: 20px 10px;
+}

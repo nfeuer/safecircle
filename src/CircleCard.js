@@ -30,10 +30,8 @@ const styleSheet = createStyleSheet('CircleCard', theme => ({
     color: '#2196F3'
   },
   goRight: {
-      float: 'right'
-  },
-  card: {
-    maxWidth: 345,
+    float: 'right',
+    margin: 0
   }
 }));
 
