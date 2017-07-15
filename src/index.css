@@ -65,12 +65,16 @@ body {
 }
 
 .animation-leave {
-  opacity: 1;
+  overflow-y: hidden;
+  max-height: 400px;
+  margin:20px 10px;
 }
 
 .animation-leave.animation-leave-active {
-  opacity: 0.01;
-  transition: opacity 800ms ease-in;
+  max-height: 0;
+  margin: 0 10px;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
 .welcome-image {
