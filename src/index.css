@@ -9,4 +9,20 @@ body {
   bottom: 20px;
   width: 100%;
   text-align: center;
+  z-index: 1000;
+}
+
+.title-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.class-list {
+  margin-top: 100px;  
+}
+
+.card div {
+  margin: 10px auto;
 }
