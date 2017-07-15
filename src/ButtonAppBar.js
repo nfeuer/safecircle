@@ -22,6 +22,12 @@ const styleSheet = createStyleSheet('ButtonAppBar', {
   },
   toolbar: {
     backgroundColor: '#F44336'
+  },
+  home: {
+    width: "30px",
+    height: "30px",
+    position: "relative",
+    top: "-2px"
   }
 });
 
@@ -37,7 +43,7 @@ function ButtonAppBar(props) {
           {
             current === 'index' ? null : (
               <IconButton color="contrast" aria-label="Home" onClick={jumpToHome}>
-                <Home />
+                <Home className={classes.home}/>
               </IconButton>
             )
           }
