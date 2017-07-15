@@ -4,6 +4,8 @@ import Button from 'material-ui/Button';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import PostingCard from './PostingCard';
 
+let postings = require('./postings.json');
+
 const styleSheet = createStyleSheet('Posting', theme => ({
     searchTextField: {
         width:"95%"
@@ -16,30 +18,13 @@ const styleSheet = createStyleSheet('Posting', theme => ({
     }
 }));
 
-
 class Posting extends Component {
     constructor(props) {
         super(props);
         this.state = {
             requestButton: true,
-            offerButton: true,
-            list: []
+            offerButton: true
         };
-        for (let i = 0; i < 10; i += 2) {
-            if (this.state.requestButton) {
-                this.state.list.push(<PostingCard type="request" key={i} deleteCard={()=> {
-                    this.state.list = this.state.list.filter(l => l.key !== `${i}`);
-                    this.setState(this.state);
-                }}/>);
-            }
-
-            if (this.state.offerButton) {
-                this.state.list.push(<PostingCard type="offer" key={i + 1} deleteCard={()=> {
-                    this.state.list = this.state.list.filter(l => l.key !== `${i + 1}`);
-                    this.setState(this.state);
-                }}/>);
-            }
-        }
     }
 
     toggleButton = (buttonType) => {
@@ -84,10 +69,26 @@ class Posting extends Component {
                 </div>
 
                 <div style={{marginTop: "10px"}}>
-                    {this.state.list}
+                    {this._generateList(postings)}
                 </div>
             </div>
         );
+    }
+
+    _generateList(list) {
+        return list.map((item, idx) => {
+            if ((item.type === 'request' && this.state.requestButton) || 
+                (item.type === 'offer' && this.state.offerButton)) {
+                return (
+                    <PostingCard 
+                        type={item.type} 
+                        key={idx} 
+                        title={item.title}
+                        content={item.content}
+                    />
+                );
+            }
+        });
     }
 
 }

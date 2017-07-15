@@ -79,50 +79,42 @@ class PostingCard extends Component {
                               <h5 className={classes.postingCardHeaderOffer}>Offer</h5>
                           )
                       }
-                      {
-                          this.props.type === 'request' ? (
-                              <h3 className={classes.postingCardContent}>
-                                  <QuestionAnswer className={classes.questionAnswer}/>
-                                  Where can I find a lawyer?
-                              </h3>
-                          ) : (
-                              <h3 className={classes.postingCardContent}>
-                                  <Mail className={classes.mail} />
-                                  I am renting my extra bedroom.
-                              </h3>
-                          )
-                      }
-                      {
-                          this.props.type === 'request' ? (
-                              <div>
-                                  <p className={classes.content}>
-                                      I hit someone's car.
-                                  </p>
-                                  <div className={classes.operations}>
-                                      <IconButton className={classes.done} onClick={this.props.deleteCard}>
-                                          <Done/>
-                                      </IconButton>
-                                      <IconButton className={classes.deleteIcon} onClick={this.props.deleteCard}>
-                                          <Delete/>
-                                      </IconButton>
-                                  </div>
-                              </div>
-                          ) : (
-                              <div>
-                                  <p className={classes.content}>
-                                      I have an extra bedroom in my house, feel free to come by and check it out.
-                                  </p>
-                                  <div className={classes.operations}>
-                                      <IconButton onClick={this.props.deleteCard}>
-                                          <ThumbUp />
-                                      </IconButton>
-                                      <IconButton onClick={this.props.deleteCard}>
-                                          <ThumbDown />
-                                      </IconButton>
-                                  </div>
-                              </div>
-                          )
-                      }
+                      <h3 className={classes.postingCardContent}>
+                          {
+                            this.props.type === 'request' ? (
+                              <QuestionAnswer className={classes.questionAnswer}/>
+                            ) : (
+                              <Mail className={classes.mail} />
+                            )
+                          }
+                          {this.props.title}
+                      </h3>
+                      <div>
+                          <p className={classes.content}>
+                              {this.props.content}
+                          </p>
+                          {
+                            this.props.type === 'request' ? (
+                                <div className={classes.operations}>
+                                    <IconButton className={classes.done} onClick={this.props.deleteCard}>
+                                        <Done/>
+                                    </IconButton>
+                                    <IconButton className={classes.deleteIcon} onClick={this.props.deleteCard}>
+                                        <Delete/>
+                                    </IconButton>
+                                </div>
+                            ) : (
+                                <div className={classes.operations}>
+                                    <IconButton onClick={this.props.deleteCard}>
+                                        <ThumbUp />
+                                    </IconButton>
+                                    <IconButton onClick={this.props.deleteCard}>
+                                        <ThumbDown />
+                                    </IconButton>
+                                </div>
+                            )
+                          }
+                      </div>
                   </Card>
               </div>
           </Animation>
@@ -134,6 +126,8 @@ class PostingCard extends Component {
 PostingCard.propTypes = {
   classes: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.string
 };
 
 export default withStyles(styleSheet)(PostingCard);

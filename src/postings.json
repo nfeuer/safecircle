@@ -4,23 +4,23 @@
   "title": "Can anyone help me file the tax return?",
   "content": "I just can't figure out the numbers."
 }, {
-  "user": "Andrea.S",
-  "type": "request",
-  "title": "Is there any Dominican restaurants in Brooklyn?",
-  "content": "So hungry."
-}, {
-  "user": "Emmanuel.L",
-  "type": "request",
-  "title": "My wife's green card expires before the 3 years to apply for her citizenship, do we have to apply for the green card again?",
-  "content": "Please we don't want to be deported!"
+  "user": "Scott.C",
+  "type": "offer",
+  "title": "Here you can find the links or posts directly to the law that governs the immigration question.",
+  "content": "google.com"
 }, {
   "user": "Maria.B",
   "type": "offer",
   "title": "Anyone needs translation service please contact me.",
   "content": "I am a certified translator. "
 }, {
-  "user": "Scott.C",
-  "type": "offer",
-  "title": "Here you can find the links or posts directly to the law that governs the immigration question.",
-  "content": "google.com"
-}];
+  "user": "Emmanuel.L",
+  "type": "request",
+  "title": "My wife's green card expires before the 3 years to apply for her citizenship, do we have to apply for the green card again?",
+  "content": "Please we don't want to be deported!"
+}, {
+  "user": "Andrea.S",
+  "type": "request",
+  "title": "Is there any Dominican restaurants in Brooklyn?",
+  "content": "So hungry."
+}]
