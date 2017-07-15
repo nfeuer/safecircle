@@ -10,7 +10,8 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Map from 'material-ui-icons/Map';
 import Message from 'material-ui-icons/Message';
 import Assignment from 'material-ui-icons/Assignment';
-import Library_Books from 'material-ui-icons/LibraryBooks'
+import Library_Books from 'material-ui-icons/LibraryBooks';
+import Group from 'material-ui-icons/Group';
 
 const styleSheet = createStyleSheet('CircleCard', theme => ({
   button: {
@@ -32,6 +33,15 @@ const styleSheet = createStyleSheet('CircleCard', theme => ({
   goRight: {
     float: 'right',
     margin: 0
+  },
+  card: {
+    maxWidth: 345,
+  },
+  span: {
+    fontSize: '25px'
+  },
+  people: {
+    color: '#2196F3'
   }
 }));
 
@@ -44,6 +54,10 @@ function SimpleMediaCard(props) {
           <Typography type="headline" component="h2">
             New York - Local
           </Typography>
+          <IconButton className={classes.button, classes.people} aria-label="Group">
+            <Group />
+          </IconButton>
+          <span className={classes.span}>80</span>
         </CardContent>
         <CardActions className={classes.goRight}>
           <IconButton className={classes.button, classes.buttonOne2} aria-label="Message">
@@ -52,7 +66,7 @@ function SimpleMediaCard(props) {
           <IconButton className={classes.button, classes.buttonTwo2} aria-label="Assignment">
             <Assignment />
           </IconButton>
-          <IconButton className={classes.button, classes.buttonThree2} aria-label="Library_Books">
+          <IconButton className={classes.button, classes.buttonThree2} aria-label="LibraryBooks">
             <Library_Books />
           </IconButton>
         </CardActions>

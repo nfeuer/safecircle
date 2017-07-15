@@ -6,6 +6,8 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Home from 'material-ui-icons/Home';
 import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
+import Dominican from './img/country_flags/do.png';
 
 const styleSheet = createStyleSheet('ButtonAppBar', {
   root: {
@@ -42,6 +44,7 @@ function ButtonAppBar(props) {
           <Typography type="title" color="inherit" className={classes.flex}>
             SafeCircle
           </Typography>
+          <Avatar alt="Flag" src={Dominican} />
         </Toolbar>
       </AppBar>
     </div>
