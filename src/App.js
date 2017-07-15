@@ -121,35 +121,35 @@ function generateIcons(services) {
 
   for (let i = 0; i < services.length; i++) {
     if (services[i] === 'Postal') {
-      p += '<i class="material-icons">mail</i>';
+      p += '<i class="material-icons" title="Postal">mail</i>';
     }
 
     if (services[i] === 'Phamacy') {
-      p += '<i class="material-icons">accessibility</i>';
+      p += '<i class="material-icons" title="Phamacy">accessibility</i>';
     }
 
     if (services[i] === 'Notary') {
-      p += '<i class="material-icons">accessible</i>';
+      p += '<i class="material-icons" title="Notary">accessible</i>';
     }
 
     if (services[i] === 'Grocery') {
-      p += '<i class="material-icons">account_balance</i>';
+      p += '<i class="material-icons" title="Grocery">account_balance</i>';
     }
 
     if (services[i] === 'Deli') {
-      p += '<i class="material-icons">account_balance_wallet</i>';
+      p += '<i class="material-icons" title="Deli">account_balance_wallet</i>';
     }
 
     if (services[i] === 'Job Openings') {
-      p += '<i class="material-icons">account_box</i>';
+      p += '<i class="material-icons" title="Job Openings">account_box</i>';
     }
 
     if (services[i] === 'International Calling') {
-      p += '<i class="material-icons">add_shopping_cart</i>';
+      p += '<i class="material-icons" title="International Calling">add_shopping_cart</i>';
     }
 
     if (services[i] === 'Money Transfer') {
-      p += '<i class="material-icons">card_travel</i>';
+      p += '<i class="material-icons" title="Money Transfer">card_travel</i>';
     }
   }
 
