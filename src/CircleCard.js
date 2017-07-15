@@ -34,9 +34,6 @@ const styleSheet = createStyleSheet('CircleCard', theme => ({
     float: 'right',
     margin: 0
   },
-  card: {
-    maxWidth: 345,
-  },
   span: {
     fontSize: '25px'
   },
