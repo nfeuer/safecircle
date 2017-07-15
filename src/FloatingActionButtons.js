@@ -33,7 +33,7 @@ function FloatingActionButtons(props) {
       <Button fab color="accent" className={classes.button, classes.buttonOne}>
         <AccountCircle />
       </Button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <Button fab color="accent" className={classes.button, classes.buttonTwo}>
+      <Button fab color="accent" className={classes.button, classes.buttonTwo} onClick={jumpToMap}>
         <Map />
       </Button>&nbsp;&nbsp;&nbsp;&nbsp;
       <Button fab color="accent" className={classes.button, classes.buttonThree}>
@@ -44,6 +44,12 @@ function FloatingActionButtons(props) {
       </Button>
     </div>
   );
+}
+
+function jumpToMap(e) {
+  e.preventDefault();
+
+  window.location.href = '/index.html?current=map';
 }
 
 FloatingActionButtons.propTypes = {

@@ -24,5 +24,14 @@ body {
 }
 
 .card div {
-  margin: 10px auto;
+  margin: 20px auto;
+}
+
+.map {
+  margin-top: 86px;
+}
+
+.map,
+#map {
+  height: 581px;
 }
