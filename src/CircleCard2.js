@@ -59,7 +59,7 @@ function SimpleMediaCard(props) {
           <IconButton className={classes.button, classes.buttonOne2} aria-label="Message">
             <Message />
           </IconButton>
-          <IconButton className={classes.button, classes.buttonTwo2} aria-label="Assignment">
+          <IconButton className={classes.button, classes.buttonTwo2} aria-label="Assignment" onClick={() => {window.location.href = '/index.html?current=posting'}}>
             <Assignment />
           </IconButton>
           <IconButton className={classes.button, classes.buttonThree2} aria-label="Library_Books">

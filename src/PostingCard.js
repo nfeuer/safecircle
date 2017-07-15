@@ -22,7 +22,8 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
   },
   postingCardContent: {
     padding: 16,
-    margin: 0
+    margin: 0,
+    textAlign: 'left'
   },
   done: {
     color: '#4CAF50',
@@ -34,7 +35,8 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
   },
   content: {
     margin: 0,
-    padding: 16
+    padding: 16,
+    textAlign: 'left'
   },
   operations: {
     margin: [-16, 0, 0, 0],
@@ -100,7 +102,7 @@ function PostingCard(props) {
 
 PostingCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  type: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default withStyles(styleSheet)(PostingCard);
