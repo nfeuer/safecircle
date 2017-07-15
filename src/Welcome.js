@@ -24,13 +24,13 @@ function WelcomeCard(props) {
         <CardContent className={classes.content}>
           <h4>Immigrants! Welcome to your local Indian Inner Circle</h4>
           <ol>
-            <li>A popular Indian restaurant near you :  <a href="http://www.samudrajacksonheights.com/"> <strong>  Samudra Restaurant </strong></a></li>
-            <li>To, open a bank account, go to:       <a href="https://www.chase.com/"> <strong>   Chase Bank          </strong> </a></li>
-            <li>The nearest grocery or pharmacy is:   <a href="http://www.littleindiagrocery.com/"> <strong>  Little India </strong></a></li>
+            <li>A popular Indian restaurant near you: <a href="/index.html?current=map&mapType=markerSingle&coord=40.749197,-73.890355"><strong>Samudra Restaurant</strong></a></li>
+            <li>To, open a bank account, go to: <a href="/index.html?current=map&mapType=markerSingle&coord=40.747246,-73.890269"> <strong>Chase Bank</strong></a></li>
+            <li>The nearest grocery or pharmacy is: <a href="/index.html?current=map&mapType=markerSingle&coord=40.748107,-73.891217"> <strong>Little India</strong></a></li>
           </ol>
         </CardContent>
         <Button dense color="primary" onClick={props.onClick}>
-          OK !
+          OK!
         </Button>
       </Card>
     </div>

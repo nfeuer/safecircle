@@ -152,6 +152,18 @@ function showMap(pos) {
     });
 
     heatmap.set('gradient', gradient);
+  } else if (mapType === 'markerSingle') {
+    let coordStr = window.location.search.match(/coord=([^&]+)/).pop();
+    let coordArr = coordStr.split(',');
+    let coord = {lat: parseFloat(coordArr[0]), lng: parseFloat(coordArr[1])};
+
+    let marker = new window.google.maps.Marker({
+      position: coord,
+      map: map
+    });
+
+    map.setCenter(coord);
+    map.setZoom(11);
   } else {
     let prev = null;
     let infowindows = {};

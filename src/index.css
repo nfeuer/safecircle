@@ -76,3 +76,25 @@ body {
 .welcome-image {
   width: 100%;
 }
+
+.comment-list {
+  padding: 12px;
+  text-align: left;
+}
+
+.comment-input {
+  margin: 0;
+}
+
+.show-comment {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+#comment {
+  width: 243px;
+}
+
+h6 {
+  margin: 5px 0 !important;
+}

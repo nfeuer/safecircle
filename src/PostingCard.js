@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
+import Collapse from 'material-ui/transitions/Collapse';
 import QuestionAnswer from 'material-ui-icons/QuestionAnswer';
 import Done from 'material-ui-icons/Done';
 import Delete from 'material-ui-icons/Delete';
@@ -10,6 +11,11 @@ import ThumbDown from 'material-ui-icons/ThumbDown';
 import Mail from 'material-ui-icons/Mail';
 import ThumbUp from 'material-ui-icons/ThumbUp';
 import Animation from './Animation';
+import classnames from 'classnames';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
+
 const styleSheet = createStyleSheet('PostingCard', theme => ({
   postingCardHeaderRequest: {
     background: '#f50057',
@@ -61,13 +67,27 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
   }
 }));
 
+let comments = [{
+  user: 'Juan',
+  content: 'Sounds good!'
+}, {
+  user: 'Jacob',
+  content: 'Very helpful!'
+}];
+  
 class PostingCard extends Component {
   constructor(props) {
       super(props);
+
+      this.state = {
+        expanded: false,
+        comments: comments
+      };
   }
 
   render() {
       let classes = this.props.classes;
+
       return (
           <Animation>
               <div className="posting-card">
@@ -115,10 +135,64 @@ class PostingCard extends Component {
                             )
                           }
                       </div>
+                      <div>
+                        <IconButton
+                          onClick={this._handleExpand.bind(this)}
+                          aria-expanded={this.state.expanded}
+                          aria-label="Show more"
+                          className="show-comment">
+                          <ExpandMoreIcon />
+                        </IconButton>
+                      </div>
+                      <Collapse 
+                        in={this.state.expanded} 
+                        transitionDuration="auto" 
+                        unmountOnExit
+                        className="comment-list">
+                        <p className="comment-input">
+                          <TextField
+                            ref="comment"
+                            id="comment"
+                            label="Write Your Comment"
+                            className="comment-field"
+                            marginForm/>
+                          <Button onClick={this._handleSubmit.bind(this)}>SUBMIT</Button>
+                        </p>
+                        <h6>Comments</h6>
+                        {
+                          this.state.comments.map((item, idx) => {
+                            return (
+                              <p key={idx}>{item.user}: {item.content}</p>
+                            )
+                          })
+                        }
+                      </Collapse>
                   </Card>
               </div>
           </Animation>
       );
+  }
+
+  _handleExpand(e) {
+    e.preventDefault();
+
+    this.setState({ 
+      expanded: !this.state.expanded 
+    });
+  }
+
+  _handleSubmit(e) {
+    e.preventDefault();
+
+    let comments = this.state.comments;
+    comments.unshift({
+      user: 'David',
+      content: document.getElementById('comment').value
+    });
+
+    this.setState({
+      comments: comments
+    });
   }
 
 };
