@@ -48,7 +48,7 @@ function ButtonAppBar(props) {
             )
           }
           <Typography type="title" color="inherit" className={classes.flex}>
-            SafeCircle
+            InnerCircle
           </Typography>
           <Avatar alt="Flag" src={Dominican} />
         </Toolbar>
