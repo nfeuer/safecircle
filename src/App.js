@@ -6,7 +6,6 @@ import FloatingActionButtons from './FloatingActionButtons';
 import Card from './Card';
 
 import retailers from './retailers.json';
-console.log(retailers);
 
 let map, heatmap, marker;
 
@@ -93,24 +92,69 @@ function showMap(pos) {
     icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
   });
 
-  for (let i = 0; i < retailers.length; i++) {
-    new window.google.maps.Marker({
-      position: retailers[i],
-      map: map
-    });
+  let prev = null;
+  let infowindows = {};
+  for (let i in retailers) {
+    (() => {
+      let key = i;
+      let marker = new window.google.maps.Marker({
+        position: {lat: retailers[key].lat, lng: retailers[key].lng},
+        map: map
+      });
+
+      marker.addListener('click', () => {
+        if (prev != null) {
+          prev.close();
+        }
+
+        prev = new window.google.maps.InfoWindow({
+          content: `Services: ${retailers[key].services.length > 0 ? generateIcons(retailers[key].services) : 'no data'}`
+        });
+        prev.open(map, marker);
+      });
+    })();
   }
 }
 
-function getPoints(center) {
-  var res = [];
-  for (var i = 0; i < 1000; i++) {
-    var newLat = center.lat + Math.random() / 100 * (Math.random() < 0.5 ? -1 : 1);
-    var newLng = center.lng + Math.random() / 100 * (Math.random() < 0.5 ? -1 : 1);
+function generateIcons(services) {
+  let p = '<p>';
 
-    res.push(new window.google.maps.LatLng(newLat, newLng));
+  for (let i = 0; i < services.length; i++) {
+    if (services[i] === 'Postal') {
+      p += '<i class="material-icons">mail</i>';
+    }
+
+    if (services[i] === 'Phamacy') {
+      p += '<i class="material-icons">accessibility</i>';
+    }
+
+    if (services[i] === 'Notary') {
+      p += '<i class="material-icons">accessible</i>';
+    }
+
+    if (services[i] === 'Grocery') {
+      p += '<i class="material-icons">account_balance</i>';
+    }
+
+    if (services[i] === 'Deli') {
+      p += '<i class="material-icons">account_balance_wallet</i>';
+    }
+
+    if (services[i] === 'Job Openings') {
+      p += '<i class="material-icons">account_box</i>';
+    }
+
+    if (services[i] === 'International Calling') {
+      p += '<i class="material-icons">add_shopping_cart</i>';
+    }
+
+    if (services[i] === 'Money Transfer') {
+      p += '<i class="material-icons">card_travel</i>';
+    }
   }
 
-  return res;
+  p += '</p>'
+  return p;
 }
 
 export default App;
