@@ -11,16 +11,20 @@ export default class Animation extends Component {
     componentDidMount() {
         this.setState(state => {
             return {isLoading: false};
-        })
+        });
     }
+
     render() {
         return (
             <CSSTransitionGroup
             transitionName="animation"
             transitionEnterTimeout={500}
+            transitionAppearTimeout={600}
             transitionLeaveTimeout={300}
+            transitionAppear={true}
+            transitionLeave={true}
             >
-                {!this.state.isLoading && this.props.children}
+                {!this.state.isLoading && !this.props.isLeave && this.props.children}
             </CSSTransitionGroup>
         );
     }

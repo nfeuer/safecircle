@@ -36,7 +36,7 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
   },
   done: {
     color: '#4CAF50',
-    marginRight: 5
+    fontSize: "30px"
   },
   mail: {
       position: "relative",
@@ -57,19 +57,21 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
     color: '#aaa'
   },
   deleteIcon: {
-      color: "#F44336"
+      color: "#F44336",
+      fontSize: "30px"
   }
 }));
 
 class PostingCard extends Component {
   constructor(props) {
       super(props);
+      this.isLeave = false;
   }
 
   render() {
       let classes = this.props.classes;
       return (
-          <Animation>
+          <Animation isLeave={this.isLeave}>
               <div className="posting-card">
                   <Card className={classes.card}>
                       {
@@ -96,19 +98,35 @@ class PostingCard extends Component {
                           {
                             this.props.type === 'request' ? (
                                 <div className={classes.operations}>
-                                    <IconButton className={classes.done} onClick={this.props.deleteCard}>
+                                    <IconButton className={classes.done} onClick={()=> {
+                                          this.isLeave = true;
+                                          this.props.onDelete();
+                                          this.forceUpdate();
+                                      }}>
                                         <Done/>
                                     </IconButton>
-                                    <IconButton className={classes.deleteIcon} onClick={this.props.deleteCard}>
+                                    <IconButton className={classes.deleteIcon} onClick={()=> {
+                                          this.isLeave = true;
+                                          this.props.onDelete();
+                                        this.forceUpdate();
+                                      }}>
                                         <Delete/>
                                     </IconButton>
                                 </div>
                             ) : (
                                 <div className={classes.operations}>
-                                    <IconButton onClick={this.props.deleteCard}>
+                                    <IconButton onClick={()=> {
+                                          this.isLeave = true;
+                                          this.props.onDelete();
+                                          this.forceUpdate();
+                                      }}>
                                         <ThumbUp />
                                     </IconButton>
-                                    <IconButton onClick={this.props.deleteCard}>
+                                    <IconButton onClick={()=> {
+                                          this.isLeave = true;
+                                          this.props.onDelete();
+                                          this.forceUpdate();
+                                      }}>
                                         <ThumbDown />
                                     </IconButton>
                                 </div>

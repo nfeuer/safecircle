@@ -28,7 +28,11 @@ const styleSheet = createStyleSheet('CircleCard3', theme => ({
   later: {
     background: "#0091EA",
     color: "#fff"
-  }
+  },
+    group: {
+        position: "relative",
+        top: "2px"
+    }
 }));
 
 function SimpleMediaCard(props) {
@@ -42,7 +46,7 @@ function SimpleMediaCard(props) {
             New York - City All
           </Typography>
           <IconButton className={classes.button, classes.people} aria-label="Group">
-            <Group />
+            <Group className={classes.group}/>
           </IconButton>
           <span className={classes.span}>10k</span>
         </CardContent>
