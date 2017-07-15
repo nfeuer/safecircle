@@ -10,7 +10,25 @@ import Card3 from './CircleCard3';
 
 import retailers from './retailers.json';
 
+let gradient = [
+  'rgba(0, 255, 255, 0)',
+  'rgba(0, 255, 255, 1)',
+  'rgba(0, 191, 255, 1)',
+  'rgba(0, 127, 255, 1)',
+  'rgba(0, 63, 255, 1)',
+  'rgba(0, 0, 255, 1)',
+  'rgba(0, 0, 223, 1)',
+  'rgba(0, 0, 191, 1)',
+  'rgba(0, 0, 159, 1)',
+  'rgba(0, 0, 127, 1)',
+  'rgba(63, 0, 91, 1)',
+  'rgba(127, 0, 63, 1)',
+  'rgba(191, 0, 31, 1)',
+  'rgba(255, 0, 0, 1)'
+];
+
 let map, heatmap, marker;
+let mapType = window.location.search.match(/mapType=([^&]+)/) ? window.location.search.match(/mapType=([^&]+)/).pop() : 'marker';
 
 class App extends Component {
 
@@ -89,27 +107,36 @@ function showMap(pos) {
     icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
   });
 
-  let prev = null;
-  let infowindows = {};
-  for (let i in retailers) {
-    (() => {
-      let key = i;
-      let marker = new window.google.maps.Marker({
-        position: {lat: retailers[key].lat, lng: retailers[key].lng},
-        map: map
-      });
+  if (mapType === 'heatmap') {
+    heatmap = new window.google.maps.visualization.HeatmapLayer({
+      data: getPoints(),
+      map: map
+    });
 
-      marker.addListener('click', () => {
-        if (prev != null) {
-          prev.close();
-        }
-
-        prev = new window.google.maps.InfoWindow({
-          content: `Services: ${retailers[key].services.length > 0 ? generateIcons(retailers[key].services) : 'no data'}`
+    heatmap.set('gradient', gradient);
+  } else {
+    let prev = null;
+    let infowindows = {};
+    for (let i in retailers) {
+      (() => {
+        let key = i;
+        let marker = new window.google.maps.Marker({
+          position: {lat: retailers[key].lat, lng: retailers[key].lng},
+          map: map
         });
-        prev.open(map, marker);
-      });
-    })();
+
+        marker.addListener('click', () => {
+          if (prev != null) {
+            prev.close();
+          }
+
+          prev = new window.google.maps.InfoWindow({
+            content: `Services: ${retailers[key].services.length > 0 ? generateIcons(retailers[key].services) : 'no data'}`
+          });
+          prev.open(map, marker);
+        });
+      })();
+    }
   }
 }
 
@@ -152,6 +179,17 @@ function generateIcons(services) {
 
   p += '</p>'
   return p;
+}
+
+function getPoints() {
+  let res = [];
+  for (let i in retailers) {
+    res.push({
+      location: new window.google.maps.LatLng(retailers[i].lat, retailers[i].lng),
+      weight: retailers[i].users || 0
+    });
+  }
+  return res;
 }
 
 export default App;
