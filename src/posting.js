@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import PostingCard from './PostingCard';
+import Welcome from './Welcome';
 
 let postings = require('./postings.json');
 
@@ -23,7 +24,8 @@ class Posting extends Component {
         super(props);
         this.state = {
             requestButton: true,
-            offerButton: true
+            offerButton: true,
+            welcomeShowed: false
         };
         this.postings = postings;
     }
@@ -70,6 +72,11 @@ class Posting extends Component {
                 </div>
 
                 <div style={{marginTop: "10px"}}>
+                    {
+                        this.state.welcomeShowed ? null : (
+                            <Welcome onClick={this._showCardList.bind(this)}/>
+                        )
+                    }
                     {this._generateList(this.postings)}
                 </div>
             </div>
@@ -92,6 +99,12 @@ class Posting extends Component {
                     />
                 );
             }
+        });
+    }
+
+    _showCardList() {
+        this.setState({
+            welcomeShowed: true
         });
     }
 

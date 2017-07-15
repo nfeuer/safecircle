@@ -25,6 +25,7 @@ body {
 
 .card {
   margin: 20px 10px;
+  text-align: left;
 }
 
 .card h4 {
@@ -96,7 +97,7 @@ body {
 }
 
 #comment {
-  width: 243px;
+  width: 235px;
 }
 
 h6 {

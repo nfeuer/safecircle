@@ -8,7 +8,6 @@ import Posting from './posting';
 import Card from './CircleCard';
 import Card2 from './CircleCard2';
 import Card3 from './CircleCard3';
-import Welcome from './Welcome';
 
 import retailers from './retailers.json';
 
@@ -40,8 +39,7 @@ class App extends Component {
     this.current = window.location.search.match(/current=([^&]+)/) ? window.location.search.match(/current=([^&]+)/).pop() : 'index';
   
     this.state = {
-      showHeatMap: mapType === 'heatmap',
-      welcomeShowed: false
+      showHeatMap: mapType === 'heatmap'
     };
   }
 
@@ -73,29 +71,25 @@ class App extends Component {
     return (
       <div className="class-list">
         {
-          this.state.welcomeShowed ? (
-            items.map((item, idx) => {
-              if (idx === 0) {
-                return (
-                  <Card />
-                );
-              } else if (idx === 1) {
-                return (
-                  <Card2 />
-                );
-              } else if (idx === 2) {
-                return (
-                  <Card3 />
-                );
-              } else {
-                return (
-                  <Card />
-                );
-              }
-            })
-          ) : (
-            <Welcome onClick={this._showCardList.bind(this)}/>
-          )
+          items.map((item, idx) => {
+            if (idx === 0) {
+              return (
+                <Card />
+              );
+            } else if (idx === 1) {
+              return (
+                <Card2 />
+              );
+            } else if (idx === 2) {
+              return (
+                <Card3 />
+              );
+            } else {
+              return (
+                <Card />
+              );
+            }
+          })
         }
       </div>
     );
@@ -114,12 +108,6 @@ class App extends Component {
                 onChange={(e, c) => {window.location.href =this.state.showHeatMap ? "index.html?current=map" : "index.html?current=map&mapType=heatmap"}}/>
       </div>
     );
-  }
-
-  _showCardList() {
-    this.setState({
-      welcomeShowed: true
-    });
   }
 
 }
@@ -163,7 +151,7 @@ function showMap(pos) {
     });
 
     map.setCenter(coord);
-    map.setZoom(11);
+    map.setZoom(12);
   } else {
     let prev = null;
     let infowindows = {};
