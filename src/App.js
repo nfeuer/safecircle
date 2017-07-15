@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui/styles';
+import Switch from 'material-ui/Switch';
 
 import ButtonAppBar from './ButtonAppBar';
 import FloatingActionButtons from './FloatingActionButtons';
@@ -36,6 +37,10 @@ class App extends Component {
     super(props);
 
     this.current = window.location.search.match(/current=([^&]+)/) ? window.location.search.match(/current=([^&]+)/).pop() : 'index';
+  
+    this.state = {
+      showHeatMap: mapType === 'heatmap'
+    };
   }
 
   render() {
@@ -80,6 +85,9 @@ class App extends Component {
     return (
       <div className="map">
         <div id="map">loading map...</div>
+        <Switch className="map-toggle" 
+                checked={this.state.showHeatMap}
+                onChange={(e, c) => {window.location.href =this.state.showHeatMap ? "index.html?current=map" : "index.html?current=map&mapType=heatmap"}}/>
       </div>
     );
   }
@@ -97,7 +105,7 @@ function showMap(pos) {
   };
 
   map = new window.google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: mapType === 'heatmap' ? 10 : 14,
     center: center
   });
 

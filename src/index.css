@@ -39,3 +39,9 @@ body {
 .posting-card {
   margin: 20px 10px;
 }
+
+.map-toggle {
+  position: fixed;
+  bottom: 50px;
+  z-index: 1000;
+}
