@@ -22,8 +22,24 @@ class Posting extends Component {
         super(props);
         this.state = {
             requestButton: true,
-            offerButton: true
+            offerButton: true,
+            list: []
         };
+        for (let i = 0; i < 10; i += 2) {
+            if (this.state.requestButton) {
+                this.state.list.push(<PostingCard type="request" key={i} deleteCard={()=> {
+                    this.state.list = this.state.list.filter(l => l.key !== `${i}`);
+                    this.setState(this.state);
+                }}/>);
+            }
+
+            if (this.state.offerButton) {
+                this.state.list.push(<PostingCard type="offer" key={i + 1} deleteCard={()=> {
+                    this.state.list = this.state.list.filter(l => l.key !== `${i + 1}`);
+                    this.setState(this.state);
+                }}/>);
+            }
+        }
     }
 
     toggleButton = (buttonType) => {
@@ -42,11 +58,6 @@ class Posting extends Component {
     render() {
         let requestButton = this.props.classes.requestButton;
         let offerButton  = this.props.classes.offerButton;
-        let inactiveButton = this.props.classes.inactiveButton;
-
-        let requestButtonClass = this.state.requestButton ? requestButton : inactiveButton;
-        let inactiveButtonClass = this.state.offerButton ? offerButton : inactiveButton;
-
         return (
             <div style={{marginTop: "90px", textAlign: "center"}}>
                 <TextField
@@ -73,26 +84,10 @@ class Posting extends Component {
                 </div>
 
                 <div style={{marginTop: "10px"}}>
-                    {this._renderLists()}
+                    {this.state.list}
                 </div>
             </div>
         );
-    }
-
-    _renderLists() {
-        let list = [];
-
-        for (let i = 0; i < 10; i += 2) {
-            if (this.state.requestButton) {
-                list.push(<PostingCard type="request" key={i}/>);
-            }
-
-            if (this.state.offerButton) {
-                list.push(<PostingCard type="offer" key={i + 1}/>);
-            }
-        }
-
-        return list;
     }
 
 }
