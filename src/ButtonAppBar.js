@@ -4,7 +4,8 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import MenuIcon from 'material-ui-icons/Menu';
+import Home from 'material-ui-icons/Home';
+import IconButton from 'material-ui/IconButton';
 
 const styleSheet = createStyleSheet('ButtonAppBar', {
   root: {
@@ -23,12 +24,21 @@ const styleSheet = createStyleSheet('ButtonAppBar', {
 });
 
 function ButtonAppBar(props) {
+  const current = window.location.search.match(/current=([^&]+)/) ? window.location.search.match(/current=([^&]+)/).pop() : 'index';
   const classes = props.classes;
+
   return (
     <div className={classes.root}>
       <div className={classes.status}></div>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
+          {
+            current === 'index' ? null : (
+              <IconButton color="contrast" aria-label="Home" onClick={jumpToHome}>
+                <Home />
+              </IconButton>
+            )
+          }
           <Typography type="title" color="inherit" className={classes.flex}>
             SafeCircle
           </Typography>
@@ -36,6 +46,12 @@ function ButtonAppBar(props) {
       </AppBar>
     </div>
   );
+}
+
+function jumpToHome(e) {
+  e.preventDefault();
+
+  window.location.href = '/';
 }
 
 ButtonAppBar.propTypes = {
