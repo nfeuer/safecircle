@@ -9,13 +9,13 @@ import ThumbUp from 'material-ui-icons/ThumbUp';
 
 const styleSheet = createStyleSheet('PostingCard', theme => ({
   postingCardHeaderRequest: {
-    background: '#F44336',
+    background: '#f50057',
     color: '#fff',
     margin: 0,
     padding: 12
   },
   postingCardHeaderOffer: {
-    background: '#4CAF50',
+    background: '#3f51b5',
     color: '#fff',
     margin: 0,
     padding: 12

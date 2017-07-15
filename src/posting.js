@@ -4,47 +4,15 @@ import Button from 'material-ui/Button';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import PostingCard from './PostingCard';
 
-const TextFieldStyle = {
-    width: "95%"
-};
-
-const ButtonStyle = {
-    width: "40%",
-    marginTop: "10px",
-    marginLeft: "5%",
-    marginRight: "5%"
-};
-
 const styleSheet = createStyleSheet('Posting', theme => ({
     searchTextField: {
         width:"95%"
     },
-    requestButton: {
+    button: {
         width: "40%",
         marginTop: "10px",
         marginLeft: "5%",
-        marginRight: "5%",
-        backgroundColor: '#2196F3',
-        hoverColor: "#2196F3",
-        color: '#fff'
-    },
-    offerButton: {
-        width: "40%",
-        marginTop: "10px",
-        marginLeft: "5%",
-        marginRight: "5%",
-        backgroundColor: '#8BC34A',
-        hoverColor: "#8BC34A",
-        color: '#fff'
-    },
-    inactiveButton: {
-        width: "40%",
-        marginTop: "10px",
-        marginLeft: "5%",
-        marginRight: "5%",
-        backgroundColor: '#d5d5d5',
-        hoverColor: "#d5d5d5",
-        color: '#fff'
+        marginRight: "5%"
     }
 }));
 
@@ -79,28 +47,25 @@ class Posting extends Component {
         let requestButtonClass = this.state.requestButton ? requestButton : inactiveButton;
         let inactiveButtonClass = this.state.offerButton ? offerButton : inactiveButton;
 
-        console.log(requestButtonClass);
-
         return (
             <div style={{marginTop: "90px", textAlign: "center"}}>
                 <TextField
                     label={"Search"}
-
                     className={this.props.classes.searchTextField}
                 />
 
                 <div style={{marginTop: "10px"}}>
                     <Button raised
-                            disableFocusRipple={true}
-                            disableRipple={true}
-                            className={requestButtonClass} 
+                            className={this.props.classes.button}
+                            color={ this.state.requestButton ?
+                                "accent": "contrast"}
                             onClick={()=> { this.toggleButton("requestButton"); }}>
                             Request
                     </Button>
                     <Button raised
-                            disableFocusRipple={true}
-                            disableRipple={true}
-                            className={inactiveButtonClass} 
+                            className={this.props.classes.button}
+                            color={ this.state.offerButton ?
+                                "primary": "contrast"}
                             onClick={()=> { this.toggleButton("offerButton"); }}>
                             Offer
                     </Button>
