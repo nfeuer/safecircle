@@ -8,6 +8,7 @@ import Posting from './posting';
 import Card from './CircleCard';
 import Card2 from './CircleCard2';
 import Card3 from './CircleCard3';
+import Welcome from './Welcome';
 
 import retailers from './retailers.json';
 
@@ -39,7 +40,8 @@ class App extends Component {
     this.current = window.location.search.match(/current=([^&]+)/) ? window.location.search.match(/current=([^&]+)/).pop() : 'index';
   
     this.state = {
-      showHeatMap: mapType === 'heatmap'
+      showHeatMap: mapType === 'heatmap',
+      welcomeShowed: false
     };
   }
 
@@ -67,12 +69,34 @@ class App extends Component {
   }
 
   _renderCardList() {
+    let items = [0,1,2,3];
     return (
       <div className="class-list">
-        <Card />
-        <Card2 />
-        <Card3 />
-        <Card />
+        {
+          this.state.welcomeShowed ? (
+            items.map((item, idx) => {
+              if (idx === 0) {
+                return (
+                  <Card />
+                );
+              } else if (idx === 1) {
+                return (
+                  <Card2 />
+                );
+              } else if (idx === 2) {
+                return (
+                  <Card3 />
+                );
+              } else {
+                return (
+                  <Card />
+                );
+              }
+            })
+          ) : (
+            <Welcome onClick={this._showCardList.bind(this)}/>
+          )
+        }
       </div>
     );
   }
@@ -90,6 +114,12 @@ class App extends Component {
                 onChange={(e, c) => {window.location.href =this.state.showHeatMap ? "index.html?current=map" : "index.html?current=map&mapType=heatmap"}}/>
       </div>
     );
+  }
+
+  _showCardList() {
+    this.setState({
+      welcomeShowed: true
+    });
   }
 
 }

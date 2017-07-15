@@ -27,6 +27,15 @@ body {
   margin: 20px 10px;
 }
 
+.card h4 {
+  margin: 10px 0;
+}
+
+.card ol {
+  margin: 10px 0;
+  line-height: 1.2em;
+}
+
 .map {
   margin-top: 86px;
 }
@@ -62,4 +71,8 @@ body {
 .animation-leave.animation-leave-active {
   opacity: 0.01;
   transition: opacity 800ms ease-in;
+}
+
+.welcome-image {
+  width: 100%;
 }
