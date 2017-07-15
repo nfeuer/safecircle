@@ -3,7 +3,8 @@ import { MuiThemeProvider } from 'material-ui/styles';
 
 import ButtonAppBar from './ButtonAppBar';
 import FloatingActionButtons from './FloatingActionButtons';
-import Card from './Card';
+import Card from './CircleCard';
+import Card2 from './CircleCard2';
 
 class App extends Component {
 
@@ -17,7 +18,7 @@ class App extends Component {
           <FloatingActionButtons />
           <div className="class-list">
             <Card />
-            <Card />
+            <Card2 />
             <Card />
             <Card />
             <Card />
