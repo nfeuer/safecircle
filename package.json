@@ -1,20 +1,30 @@
 {
   "name": "safecircle",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "material-ui": "^1.0.0-alpha.21",
-    "material-ui-icons": "^1.0.0-alpha.19",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  },
-  "devDependencies": {
-    "react-scripts": "1.0.10"
-  },
   "scripts": {
+    "start-server": "./node_modules/.bin/nodemon bin/www",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "~2.6.3",
+    "express": "^4.15.3",
+    "jade": "~1.11.0",
+    "material-ui": "^1.0.0-alpha.21",
+    "material-ui-icons": "^1.0.0-alpha.19",
+    "morgan": "^1.8.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "serve-favicon": "^2.4.3",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "react-scripts": "^1.0.10"
   }
 }

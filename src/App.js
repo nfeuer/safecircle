@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div className="class-list">
         <Card />
-        <Card />
+        <Card2 />
         <Card />
         <Card />
         <Card />

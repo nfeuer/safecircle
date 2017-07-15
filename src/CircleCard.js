@@ -12,7 +12,7 @@ import Message from 'material-ui-icons/Message';
 import Assignment from 'material-ui-icons/Assignment';
 import Library_Books from 'material-ui-icons/LibraryBooks'
 
-const styleSheet = createStyleSheet('FloatingActionButtons', theme => ({
+const styleSheet = createStyleSheet('CircleCard', theme => ({
   button: {
     margin: theme.spacing.unit,
     color: '#fff'
