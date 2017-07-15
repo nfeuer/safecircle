@@ -12,7 +12,7 @@ import Message from 'material-ui-icons/Message';
 import Assignment from 'material-ui-icons/Assignment';
 import LibraryBooks from 'material-ui-icons/LibraryBooks';
 import Group from 'material-ui-icons/Group';
-
+import Animation from './Animation';
 const styleSheet = createStyleSheet('CircleCard2', theme => ({
   button: {
 
@@ -44,6 +44,7 @@ const styleSheet = createStyleSheet('CircleCard2', theme => ({
 function SimpleMediaCard(props) {
   const classes = props.classes;
   return (
+  <Animation>
     <div className="card">
       <Card className={classes.card}>
         <CardContent>
@@ -68,6 +69,7 @@ function SimpleMediaCard(props) {
         </CardActions>
       </Card>
     </div>
+  </Animation>
   );
 }
 

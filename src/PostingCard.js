@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import IconButton from 'material-ui/IconButton';
+import QuestionAnswer from 'material-ui-icons/QuestionAnswer';
 import Done from 'material-ui-icons/Done';
 import Delete from 'material-ui-icons/Delete';
 import ThumbDown from 'material-ui-icons/ThumbDown';
+import Mail from 'material-ui-icons/Mail';
 import ThumbUp from 'material-ui-icons/ThumbUp';
-
+import Animation from './Animation';
 const styleSheet = createStyleSheet('PostingCard', theme => ({
   postingCardHeaderRequest: {
     background: '#f50057',
@@ -25,13 +28,21 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
     margin: 0,
     textAlign: 'left'
   },
+  questionAnswer: {
+    position: "relative",
+    top: "5px",
+    color: "#9E9E9E",
+    marginRight: 5
+  },
   done: {
     color: '#4CAF50',
     marginRight: 5
   },
-  notHelpful: {
-    color: '#F44336',
-    marginRight: 5
+  mail: {
+      position: "relative",
+      top: "5px",
+      color: "#9E9E9E",
+      marginRight: 5
   },
   content: {
     margin: 0,
@@ -44,60 +55,80 @@ const styleSheet = createStyleSheet('PostingCard', theme => ({
     textAlign: 'right',
     fontSize: 12,
     color: '#aaa'
+  },
+  deleteIcon: {
+      color: "#F44336"
   }
 }));
 
-function PostingCard(props) {
-  const classes = props.classes;
-  return (
-    <div className="posting-card">
-      <Card className={classes.card}>
-        {
-          props.type === 'request' ? (
-            <h5 className={classes.postingCardHeaderRequest}>Request</h5>
-          ) : (
-            <h5 className={classes.postingCardHeaderOffer}>Offer</h5>
-          )
-        }
-        {
-          props.type === 'request' ? (
-            <h3 className={classes.postingCardContent}>
-              <Done className={classes.done} />
-              Where can I find a lawyer?
-            </h3>
-          ) : (
-            <h3 className={classes.postingCardContent}>
-              <ThumbDown className={classes.notHelpful} />
-              I am renting my extra bedroom.
-            </h3>
-          )
-        }
-        {
-          props.type === 'request' ? (
-            <div>
-              <p className={classes.content}>
-                I hit someone's car.
-              </p>
-              <div className={classes.operations}>
-                <Done />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Delete />
+class PostingCard extends Component {
+  constructor(props) {
+      super(props);
+  }
+
+  render() {
+      let classes = this.props.classes;
+      return (
+          <Animation>
+              <div className="posting-card">
+                  <Card className={classes.card}>
+                      {
+                          this.props.type === 'request' ? (
+                              <h5 className={classes.postingCardHeaderRequest}>Request</h5>
+                          ) : (
+                              <h5 className={classes.postingCardHeaderOffer}>Offer</h5>
+                          )
+                      }
+                      {
+                          this.props.type === 'request' ? (
+                              <h3 className={classes.postingCardContent}>
+                                  <QuestionAnswer className={classes.questionAnswer}/>
+                                  Where can I find a lawyer?
+                              </h3>
+                          ) : (
+                              <h3 className={classes.postingCardContent}>
+                                  <Mail className={classes.mail} />
+                                  I am renting my extra bedroom.
+                              </h3>
+                          )
+                      }
+                      {
+                          this.props.type === 'request' ? (
+                              <div>
+                                  <p className={classes.content}>
+                                      I hit someone's car.
+                                  </p>
+                                  <div className={classes.operations}>
+                                      <IconButton className={classes.done} onClick={this.props.deleteCard}>
+                                          <Done/>
+                                      </IconButton>
+                                      <IconButton className={classes.deleteIcon} onClick={this.props.deleteCard}>
+                                          <Delete/>
+                                      </IconButton>
+                                  </div>
+                              </div>
+                          ) : (
+                              <div>
+                                  <p className={classes.content}>
+                                      I have an extra bedroom in my house, feel free to come by and check it out.
+                                  </p>
+                                  <div className={classes.operations}>
+                                      <IconButton onClick={this.props.deleteCard}>
+                                          <ThumbUp />
+                                      </IconButton>
+                                      <IconButton onClick={this.props.deleteCard}>
+                                          <ThumbDown />
+                                      </IconButton>
+                                  </div>
+                              </div>
+                          )
+                      }
+                  </Card>
               </div>
-            </div>
-          ) : (
-            <div>
-              <p className={classes.content}>
-                I have an extra bedroom in my house, feel free to come by and check it out.
-              </p>
-              <div className={classes.operations}>
-                <ThumbUp />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <ThumbDown />
-              </div>
-            </div>
-          )
-        }
-      </Card>
-    </div>
-  );
+          </Animation>
+      );
+  }
+
 };
 
 PostingCard.propTypes = {

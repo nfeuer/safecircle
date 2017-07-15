@@ -43,5 +43,23 @@ body {
 .map-toggle {
   position: fixed;
   bottom: 50px;
-  z-index: 1000;
+  z-index: 1000; 
+}
+
+.animation-enter {
+  opacity: 0.01;
+}
+
+.animation-enter.animation-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.animation-leave {
+  opacity: 1;
+}
+
+.animation-leave.animation-leave-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease-in;
 }
